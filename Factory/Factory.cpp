@@ -11,9 +11,7 @@
 // 
 // https://refactoring.guru/design-patterns/factory-method
 
-#include <mutex>
 #include <string>
-#include <thread>
 #include <iostream>
 
 // The Product interface declares the operations that all concrete products must implement.
