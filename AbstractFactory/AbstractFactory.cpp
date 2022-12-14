@@ -1,4 +1,16 @@
-// Abstract Factory is a creational design pattern that lets you produce families of related objects without specifying their concrete classes.
+// Abstract Factory is a creational design pattern that lets you produce 
+// families of related objects without specifying their concrete classes.
+
+// Abstract Factory defines an interface for creating all distinct products, 
+// but leaves the actual product creation to concrete factory classes. 
+// Each factory type corresponds to a certain product variety.
+
+// The client code calls the creation methods of a factory object instead of creating products directly with a constructor call (new operator).
+// Since a factory corresponds to a single product variant, all its products will be compatible.
+
+// Client code works with factories and products only through their abstract interfaces.
+// This lets the client code work with any product variants, created by the factory object.
+// You just create a new concrete factory class and pass it to the client code.
 
 // https://refactoring.guru/design-patterns/abstract-factory
 
@@ -73,8 +85,8 @@ class ConcreteProductB2 : public AbstractProductB
             return "The result of the product B2.";
         }
     
-        // The variant, Product B2, is only able to work correctly with the variant,
-        // Product A2. Nevertheless, it accepts any instance of AbstractProductA as an argument.
+        // The variant, Product B2, is only able to work correctly with the variant, Product A2. 
+        // Nevertheless, it accepts any instance of AbstractProductA as an argument.
         std::string AnotherUsefulFunctionB(const AbstractProductA& collaborator) const override 
         {
             const std::string result = collaborator.UsefulFunctionA();
@@ -132,8 +144,10 @@ void ClientCode(const AbstractFactory& factory)
 {
     const AbstractProductA* product_a = factory.CreateProductA();
     const AbstractProductB* product_b = factory.CreateProductB();
+
     std::cout << product_b->UsefulFunctionB() << "\n";
     std::cout << product_b->AnotherUsefulFunctionB(*product_a) << "\n";
+
     delete product_a;
     delete product_b;
 }
@@ -146,6 +160,7 @@ int main()
     delete f1;
 
     std::cout << std::endl;
+
     std::cout << "Client: Testing the same client code with the second factory type:\n";
     ConcreteFactory2* f2 = new ConcreteFactory2();
     ClientCode(*f2);
