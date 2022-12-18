@@ -1,7 +1,12 @@
 // Factory Method AKA Virtual Constructor
+// 
 // Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, 
 // but allows subclasses to alter the type of objects that will be created.
+// It solves the problem of creating product objects without specifying their concrete classes.
 // 
+// The Factory Method defines a method, which should be used for creating objects instead of using a direct constructor call (new operator). 
+// Subclasses can override this method to change the class of objects that will be created.
+//
 // Usage examples: The Factory Method pattern is widely used in C++ code. 
 // It is very useful when you need to provide a high level of flexibility for your code.
 
