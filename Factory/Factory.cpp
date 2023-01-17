@@ -1,16 +1,17 @@
 // Factory Method AKA Virtual Constructor
 // 
-// Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, 
-// but allows subclasses to alter the type of objects that will be created.
+// Factory Method is a creational design pattern that provides an interface for creating objects 
+// in a superclass, but allows subclasses to alter the type of objects that will be created.
 // It solves the problem of creating product objects without specifying their concrete classes.
 // 
-// The Factory Method defines a method, which should be used for creating objects instead of using a direct constructor call (new operator). 
+// The Factory Method defines a method, which should be used for creating objects 
+// instead of using a direct constructor call (new operator). 
 // Subclasses can override this method to change the class of objects that will be created.
 //
 // Usage examples: The Factory Method pattern is widely used in C++ code. 
 // It is very useful when you need to provide a high level of flexibility for your code.
 
-// Identification: Factory methods can be recognized by creation methods that construct objects 
+// Identification: Factory methods can be recognized by creation methods that construct objects
 // from concrete classes. While concrete classes are used during the object creation, 
 // the return type of the factory methods is usually declared as either an abstract class or an interface.
 // 
@@ -46,6 +47,15 @@ class ConcreteProduct2 : public Product
         }
 };
 
+class ConcreteProduct3 : public Product
+{
+public:
+    std::string Operation() const override
+    {
+        return "{Result of the ConcreteProduct3}";
+    }
+};
+
 // The Creator class declares the factory method that is supposed to return an object of a Product class. 
 // The Creator's subclasses usually provide the implementation of this method.
 class Creator 
@@ -57,7 +67,8 @@ class Creator
 
         // Also note that, despite its name, the Creator's primary responsibility is not creating products. 
         // Usually, it contains some core business logic that relies on Product objects, returned by the factory method. 
-        // Subclasses can indirectly change that business logic by overriding the factory method and returning a different type of product from it.
+        // Subclasses can indirectly change that business logic by overriding the factory method and 
+        // returning a different type of product from it.
 
         std::string SomeOperation() const 
         {
@@ -93,6 +104,15 @@ class ConcreteCreator2 : public Creator
         }
 };
 
+class ConcreteCreator3 : public Creator
+{
+public:
+    Product* FactoryMethod() const override
+    {
+        return new ConcreteProduct3();
+    }
+};
+
 // The client code works with an instance of a concrete creator, albeit through its base interface. 
 // As long as the client keeps working with the creator via the base interface, you can pass it any creator's subclass.
 void ClientCode(const Creator& creator) 
@@ -115,6 +135,12 @@ int main()
     std::cout << "App: Launched with the ConcreteCreator2.\n";
     Creator* creator2 = new ConcreteCreator2();
     ClientCode(*creator2);
+
+    std::cout << std::endl;
+
+    std::cout << "App: Launched with the ConcreteCreator3.\n";
+    Creator* creator3 = new ConcreteCreator3();
+    ClientCode(*creator3);
 
     delete creator1;
     delete creator2;

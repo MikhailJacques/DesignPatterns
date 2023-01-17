@@ -1,10 +1,12 @@
-// Thread-safe Singleton
-// https://refactoring.guru/design-patterns/singleton
+// Singleton Design Pattern (thread-safe)
 // 
-// It is pretty easy to implement a sloppy Singleton. You just need to hide the constructor and implement a static creation method.
+// It is pretty easy to implement a sloppy Singleton. 
+// You just need to hide the constructor and implement a static creation method.
 // The same class behaves incorrectly in a multithreaded environment. 
 // Multiple threads can call the creation method simultaneously and get several instances of a Singleton class.
 // To fix the problem, you have to synchronize threads during the first creation of the Singleton object.
+
+// https://refactoring.guru/design-patterns/singleton
 
 #include <mutex>
 #include <string>
@@ -15,41 +17,41 @@
 // constructor and lets clients access the same instance of this class over and over.
 class Singleton
 {
-     // The Singleton's constructor/destructor should always be private to
-     // prevent direct construction/desctruction calls with the `new`/`delete` operator.
-private:
-    static Singleton* m_instance_ptr;
-    static std::mutex m_mutex;
+         // The Singleton's constructor/destructor should always be private to
+         // prevent direct construction/desctruction calls with the `new`/`delete` operator.
+    private:
+        static Singleton* m_instance_ptr;
+        static std::mutex m_mutex;
 
-protected:
+    protected:
 
-    Singleton(const std::string value) : m_value(value) {}
-    ~Singleton() {}
-    std::string m_value;
+        Singleton(const std::string value) : m_value(value) {}
+        ~Singleton() {}
+        std::string m_value;
 
-public:
+    public:
 
-    // Singletons should not be cloneable.
-    Singleton(Singleton& other) = delete;
+        // Singletons should not be cloneable.
+        Singleton(Singleton& other) = delete;
 
-    // Singletons should not be assignable.
-    void operator=(const Singleton&) = delete;
+        // Singletons should not be assignable.
+        void operator=(const Singleton&) = delete;
 
-    // This is the static method that controls the access to the singleton instance. 
-    // On the first run, it creates a singleton object and places it into the static field. 
-    // On subsequent runs, it returns the client existing object stored in the static field.
-    static Singleton* GetInstance(const std::string& value);
+        // This is the static method that controls the access to the singleton instance. 
+        // On the first run, it creates a singleton object and places it into the static field. 
+        // On subsequent runs, it returns the client existing object stored in the static field.
+        static Singleton* GetInstance(const std::string& value);
     
-    // Finally, any singleton should define some business logic, which can be executed on its instance.
-    void SomeBusinessLogic()
-    {
-        // ...
-    }
+        // Finally, any singleton should define some business logic, which can be executed on its instance.
+        void SomeBusinessLogic()
+        {
+            // ...
+        }
 
-    std::string Value() const 
-    {
-        return m_value;
-    }
+        std::string Value() const 
+        {
+            return m_value;
+        }
 };
 
 // Static methods should be defined outside the class.

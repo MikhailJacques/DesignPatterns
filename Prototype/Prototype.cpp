@@ -1,7 +1,15 @@
-// Prototype is a creational design pattern that allows cloning objects, even complex ones, without coupling to their specific classes.
+// Prototype Design Pattern
+//
+// Prototype is a creational design pattern that allows cloning objects, 
+// even complex ones, without coupling to their specific classes.
 
-// All prototype classes should have a common interface that makes it possible to copy objects even if their concrete classes are unknown. 
-// Prototype objects can produce full copies since objects of the same class can access each other’s private fields.
+// All prototype classes should have a common interface that makes it 
+// possible to copy objects even if their concrete classes are unknown. 
+// Prototype objects can produce full copies since objects of the same 
+// class can access each other’s private fields.
+
+// Prototype Design Pattern permits copying existing objects 
+// without making the code dependent on their classes.
 
 // https://refactoring.guru/design-patterns/prototype
 
@@ -10,10 +18,6 @@
 #include <unordered_map>
 
 using std::string;
-
-// Prototype Design Pattern
-//
-// Intent: Lets you copy existing objects without making your code dependent on their classes.
 
 enum Type 
 {
@@ -61,8 +65,10 @@ class ConcretePrototype1 : public Prototype
         ConcretePrototype1(string prototype_name, float concrete_prototype_field)
             : Prototype(prototype_name), concrete_prototype_field1_(concrete_prototype_field) { }
 
-        // The cloning method usually consists of just one line: running a new operator with the prototypical version of the constructor. 
-        // Note, that every class must explicitly override the cloning method and use its own class name along with the new operator. 
+        // The cloning method usually consists of just one line: running a new operator 
+        // with the prototypical version of the constructor. 
+        // Note, that every class must explicitly override the cloning method and 
+        // use its own class name along with the new operator. 
         // Otherwise, the cloning method may produce an object of a parent class.
 
         // Notice that Clone method returns a Pointer to a new ConcretePrototype1 replica. 
@@ -90,7 +96,8 @@ class ConcretePrototype2 : public Prototype
 };
 
 // Optionally, create a centralized prototype registry to store a catalog of frequently used prototypes.
-// You can implement the registry as a new factory class or put it in the base prototype class with a static method for fetching the prototype. 
+// You can implement the registry as a new factory class or put it in the base prototype class with 
+// a static method for fetching the prototype. 
 // This method should search for a prototype based on search criteria that the client code passes to the method. 
 // The criteria might either be a simple string tag or a complex set of search parameters. 
 // After the appropriate prototype is found, the registry should clone it and return the copy to the client.
@@ -117,7 +124,8 @@ class PrototypeFactory
             delete prototypes_[Type::PROTOTYPE_2];
         }
 
-        // Just specify the type of the prototype you want and the method will create one from the existing object of this type.
+        // Just specify the type of the prototype you want and 
+        // the method will create one from the existing object of this type.
         Prototype* CreatePrototype(Type type) 
         {
             return prototypes_[type]->Clone();

@@ -1,3 +1,5 @@
+// Decorator Design Pattern
+// 
 // Decorator is a structural design pattern that allows adding new behaviors to objects by placing 
 // these objects inside special wrapper objects (called decorators) that contain the behaviors.
 // Decorator can be recognized by creation methods or constructors that 

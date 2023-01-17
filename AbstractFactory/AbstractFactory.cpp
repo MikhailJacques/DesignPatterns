@@ -1,3 +1,5 @@
+// Abstract Factory Design Pattern
+
 // Abstract Factory is a creational design pattern that lets you produce 
 // families of related objects without specifying their concrete classes.
 
@@ -5,7 +7,8 @@
 // but leaves the actual product creation to concrete factory classes. 
 // Each factory type corresponds to a certain product variety.
 
-// The client code calls the creation methods of a factory object instead of creating products directly with a constructor call (new operator).
+// The client code calls the creation methods of a factory object 
+// instead of reating products directly with a constructor call (new operator).
 // Since a factory corresponds to a single product variant, all its products will be compatible.
 
 // Client code works with factories and products only through their abstract interfaces.

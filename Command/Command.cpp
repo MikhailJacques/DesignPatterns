@@ -1,6 +1,8 @@
-// The command pattern is a behavioural design pattern in which an object is used to represent and 
-// encapsulate all the information needed to call a method at a later time.
-// this information includes the method name, the object that owns the method and values for the mathod parameters.
+// Command Design Pattern
+//
+// The command pattern is a behavioural design pattern in which an object is used to represent 
+// and encapsulate all the information needed to call a method at a later time.
+// This information includes the method name, the object that owns the method and values for the method parameters.
 
 // Command is behavioral design pattern that converts requests or simple operations into objects.
 // The conversion allows deferred or remote execution of commands, storing command history, etc.

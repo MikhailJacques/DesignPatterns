@@ -1,3 +1,5 @@
+// Strategy Design Pattern
+//
 // Strategy is a behavioral design pattern that turns a set of behaviors into objects
 // and makes them interchangeable inside original context object.
 // The original object, called context, holds a reference to a strategy object.
@@ -26,7 +28,8 @@
 #include <iostream>
 #include <algorithm>
 
-// Provides read-only access to an existing string (a C-style string literal, a std::string, or a char array) without making a copy.
+// Provides read-only access to an existing string (a C-style string literal, a std::string, or a char array) 
+// without making a copy.
 #include <string_view>
 
 // The Strategy interface declares operations common to all supported versions of some algorithm.
