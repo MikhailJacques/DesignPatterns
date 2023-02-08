@@ -3,6 +3,7 @@
 // Bridge is a structural design pattern that lets you split a large class or a set of closely related classes 
 // into two separate hierarchies, abstraction and implementation, which can be developed independently of each other.
 // 
+// 
 // Bridge is usually designed up-front, letting you develop parts of an application independently of each other.
 // 
 // Use the pattern when you need to extend a class in several orthogonal (independent) dimensions.
